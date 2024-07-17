@@ -1,0 +1,19 @@
+import requests
+from bs4 import BeautifulSoup
+import time
+import random
+
+url = "https://webscraper.io/"
+r = requests.get(url)
+
+soup = BeautifulSoup(r.text, "lxml")
+
+title = soup.find_all("h2", class_="featurette-heading")
+for i in title:
+    print(i.text)
+    time.sleep(random.uniform(0.5, 2.0))  # Add random delay between 0.5 to 2.0 seconds
+
+heading = soup.find_all("p", class_="lead")
+for i in heading:
+    print(i.text)
+    time.sleep(random.uniform(0.5, 2.0))  # Add random delay between 0.5 to 2.0 seconds
